@@ -26,7 +26,8 @@ Route::group(['prefix' => 'passenger/'], function () {
         // Trips
         Route::get('trips', [TripController::class, 'index'])->name('passenger.trips.index');
         Route::get('trips/{id}', [TripController::class, 'show'])->name('passenger.trips.show');
-
+        
+        // Reservations
         Route::post('reservations', [ReservationController::class, 'create'])->name('passenger.reservations.create');
 
         // General Drop Down List
