@@ -11,6 +11,7 @@ if (!function_exists('apiResponse')) {
      * Unified Api Response
      * @param $success
      * @param $message
+     * @param $statusCode
      * @param null $data
      * @return json
      */
