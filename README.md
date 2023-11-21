@@ -17,7 +17,7 @@ $ cp .env.example .env
 ```bash
 $ php artisan jwt:secret
 ```
-- Migrate database table and seeders to fill tables with necessary data
+- Migrate database tables and seeders to fill tables with necessary data
 ```bash
 $ php artisan migrate --seed
 ```
@@ -25,4 +25,4 @@ $ php artisan migrate --seed
 
 ## Important Notes
 - When Passenger `(User)` create a reservation for one seat or more , `Trip->available_seats` will be decreased using `UpdateTripAvailableSeatsWhenReservationCreatedListener` 
-- If `Trip->available_seats` is 0 it will not show on `trips` list API
+- If `Trip->available_seats` is equal `0` it will not show on `trips` list API
