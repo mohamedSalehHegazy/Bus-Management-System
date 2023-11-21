@@ -1,0 +1,1106 @@
+{
+	"info": {
+		"_postman_id": "cfa72d56-6070-4253-97e4-ba451f19a25e",
+		"name": "Bus Managment System",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "15320895"
+	},
+	"item": [
+		{
+			"name": "Passenger",
+			"item": [
+				{
+					"name": "Auth",
+					"item": [
+						{
+							"name": "Login",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var responseBody = pm.response.json();",
+											"pm.environment.set(\"token\", responseBody.data.token);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "email",
+											"value": "passenger@test.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "12345678",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}passenger/login",
+									"host": [
+										"{{url}}passenger"
+									],
+									"path": [
+										"login"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Login Succes",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "email",
+													"value": "passenger@test.com",
+													"type": "text"
+												},
+												{
+													"key": "password",
+													"value": "12345678",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{url}}passenger/login",
+											"host": [
+												"{{url}}passenger"
+											],
+											"path": [
+												"login"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Date",
+											"value": "Mon, 20 Nov 2023 19:47:51 GMT"
+										},
+										{
+											"key": "Date",
+											"value": "Mon, 20 Nov 2023 19:47:51 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.2.9"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "60"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "59"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"success\": true,\n    \"message\": \"Login Success\",\n    \"data\": {\n        \"user\": {\n            \"id\": 1,\n            \"name\": \"Mohamed Saleh\",\n            \"email\": \"passenger@test.com\"\n        },\n        \"token\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL3Bhc3Nlbmdlci9sb2dpbiIsImlhdCI6MTcwMDUwOTY3MSwiZXhwIjoxNzAwNTEzMjcxLCJuYmYiOjE3MDA1MDk2NzEsImp0aSI6InFTS1RhTW43amdxcGRReG0iLCJzdWIiOiIxIiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.GEqN1YgkM2nvqRQTg77nnFr3VGSUv09HWFWILb508dY\"\n    }\n}"
+								},
+								{
+									"name": "Login Wrong Credentials",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "email",
+													"value": "passenger@test.co",
+													"type": "text"
+												},
+												{
+													"key": "password",
+													"value": "12345678",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{url}}passenger/login",
+											"host": [
+												"{{url}}passenger"
+											],
+											"path": [
+												"login"
+											]
+										}
+									},
+									"status": "Unprocessable Content",
+									"code": 422,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Date",
+											"value": "Mon, 20 Nov 2023 19:49:18 GMT"
+										},
+										{
+											"key": "Date",
+											"value": "Mon, 20 Nov 2023 19:49:18 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.2.9"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "60"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "59"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"success\": false,\n    \"message\": \"Wrong Credentials !\",\n    \"data\": null\n}"
+								},
+								{
+									"name": "Login Validation Error",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "email",
+													"value": "passenge",
+													"type": "text"
+												},
+												{
+													"key": "password",
+													"value": "12345678",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{url}}passenger/login",
+											"host": [
+												"{{url}}passenger"
+											],
+											"path": [
+												"login"
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Date",
+											"value": "Tue, 21 Nov 2023 09:30:37 GMT"
+										},
+										{
+											"key": "Date",
+											"value": "Tue, 21 Nov 2023 09:30:37 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.2.9"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "60"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "58"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"code\": 400,\n    \"message\": \"Validation Error\",\n    \"data\": {\n        \"email\": [\n            \"The email field must be a valid email address.\"\n        ]\n    }\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Reservations",
+					"item": [
+						{
+							"name": "Create",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "trip_id",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "seats[0]",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "seats[1]",
+											"value": "2",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}passenger/reservations",
+									"host": [
+										"{{url}}passenger"
+									],
+									"path": [
+										"reservations"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Create 401",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "trip_id",
+													"value": "1",
+													"type": "text"
+												},
+												{
+													"key": "seats[0]",
+													"value": "1",
+													"type": "text"
+												},
+												{
+													"key": "seats[1]",
+													"value": "2",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{url}}passenger/reservations",
+											"host": [
+												"{{url}}passenger"
+											],
+											"path": [
+												"reservations"
+											]
+										}
+									},
+									"status": "Unauthorized",
+									"code": 401,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Date",
+											"value": "Tue, 21 Nov 2023 12:13:48 GMT"
+										},
+										{
+											"key": "Date",
+											"value": "Tue, 21 Nov 2023 12:13:48 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.2.9"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"success\": false,\n    \"message\": \"UnAuthorized User\",\n    \"data\": null\n}"
+								},
+								{
+									"name": "Create Validation Error",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "trip_id",
+													"value": "1",
+													"type": "text"
+												},
+												{
+													"key": "seats[0]",
+													"value": "1",
+													"type": "text"
+												},
+												{
+													"key": "seats[1]",
+													"value": "2",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{url}}passenger/reservations",
+											"host": [
+												"{{url}}passenger"
+											],
+											"path": [
+												"reservations"
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Date",
+											"value": "Tue, 21 Nov 2023 12:26:41 GMT"
+										},
+										{
+											"key": "Date",
+											"value": "Tue, 21 Nov 2023 12:26:41 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.2.9"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "60"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "59"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"code\": 400,\n    \"message\": \"Validation Error\",\n    \"data\": {\n        \"seats.0\": [\n            \"The seats.0 has already been taken.\"\n        ],\n        \"seats.1\": [\n            \"The seats.1 has already been taken.\"\n        ]\n    }\n}"
+								},
+								{
+									"name": "Create Success",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "trip_id",
+													"value": "1",
+													"type": "text"
+												},
+												{
+													"key": "seats[0]",
+													"value": "3",
+													"type": "text"
+												},
+												{
+													"key": "seats[1]",
+													"value": "2",
+													"type": "text",
+													"disabled": true
+												}
+											]
+										},
+										"url": {
+											"raw": "{{url}}passenger/reservations",
+											"host": [
+												"{{url}}passenger"
+											],
+											"path": [
+												"reservations"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Date",
+											"value": "Tue, 21 Nov 2023 12:27:21 GMT"
+										},
+										{
+											"key": "Date",
+											"value": "Tue, 21 Nov 2023 12:27:21 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.2.9"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "60"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "58"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"success\": true,\n    \"message\": \"Creation Success\",\n    \"data\": null\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Trips",
+					"item": [
+						{
+							"name": "List",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}passenger/trips",
+									"host": [
+										"{{url}}passenger"
+									],
+									"path": [
+										"trips"
+									],
+									"query": [
+										{
+											"key": "date",
+											"value": "2023-11-21",
+											"disabled": true
+										},
+										{
+											"key": "departure_city_id",
+											"value": "1",
+											"disabled": true
+										},
+										{
+											"key": "arrival_city_id",
+											"value": "3",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "List 401",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{url}}passenger/trips",
+											"host": [
+												"{{url}}passenger"
+											],
+											"path": [
+												"trips"
+											]
+										}
+									},
+									"status": "Unauthorized",
+									"code": 401,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Date",
+											"value": "Mon, 20 Nov 2023 20:13:45 GMT"
+										},
+										{
+											"key": "Date",
+											"value": "Mon, 20 Nov 2023 20:13:45 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.2.9"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"success\": false,\n    \"message\": \"UnAuthorized User\",\n    \"data\": null\n}"
+								},
+								{
+									"name": "List Validation Error",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{url}}passenger/trips?date=2023-11-20&departure_city_id=10&arrival_city_id=30",
+											"host": [
+												"{{url}}passenger"
+											],
+											"path": [
+												"trips"
+											],
+											"query": [
+												{
+													"key": "date",
+													"value": "2023-11-20"
+												},
+												{
+													"key": "departure_city_id",
+													"value": "10"
+												},
+												{
+													"key": "arrival_city_id",
+													"value": "30"
+												}
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Date",
+											"value": "Tue, 21 Nov 2023 09:34:37 GMT"
+										},
+										{
+											"key": "Date",
+											"value": "Tue, 21 Nov 2023 09:34:37 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.2.9"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "60"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "59"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"code\": 400,\n    \"message\": \"Validation Error\",\n    \"data\": {\n        \"date\": [\n            \"The date field must be a date after yesterday.\"\n        ],\n        \"departure_city_id\": [\n            \"The selected departure city id is invalid.\"\n        ],\n        \"arrival_city_id\": [\n            \"The selected arrival city id is invalid.\"\n        ]\n    }\n}"
+								},
+								{
+									"name": "List Success",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{url}}passenger/trips",
+											"host": [
+												"{{url}}passenger"
+											],
+											"path": [
+												"trips"
+											],
+											"query": [
+												{
+													"key": "date",
+													"value": "2023-11-21",
+													"disabled": true
+												},
+												{
+													"key": "departure_city_id",
+													"value": "1",
+													"disabled": true
+												},
+												{
+													"key": "arrival_city_id",
+													"value": "3",
+													"disabled": true
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Date",
+											"value": "Tue, 21 Nov 2023 09:35:52 GMT"
+										},
+										{
+											"key": "Date",
+											"value": "Tue, 21 Nov 2023 09:35:52 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.2.9"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "60"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "58"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"success\": true,\n    \"message\": \"\",\n    \"data\": [\n        {\n            \"id\": 1,\n            \"departure_at\": \"2023-11-21 11:15 AM\",\n            \"arrive_at\": \"2023-11-21 08:11 PM\",\n            \"available_seats\": 12,\n            \"bus\": {\n                \"id\": 1,\n                \"plate_number\": \"ABC 123\"\n            },\n            \"departure_city\": {\n                \"id\": 1,\n                \"name\": \"Cairo\"\n            },\n            \"arrival_city\": {\n                \"id\": 5,\n                \"name\": \"Asyut\"\n            }\n        },\n        {\n            \"id\": 2,\n            \"departure_at\": \"2023-11-21 05:11 PM\",\n            \"arrive_at\": \"2023-11-21 06:11 PM\",\n            \"available_seats\": 12,\n            \"bus\": {\n                \"id\": 1,\n                \"plate_number\": \"ABC 123\"\n            },\n            \"departure_city\": {\n                \"id\": 1,\n                \"name\": \"Cairo\"\n            },\n            \"arrival_city\": {\n                \"id\": 3,\n                \"name\": \"AlFayyum\"\n            }\n        },\n        {\n            \"id\": 3,\n            \"departure_at\": \"2023-11-21 05:11 PM\",\n            \"arrive_at\": \"2023-11-21 07:11 PM\",\n            \"available_seats\": 12,\n            \"bus\": {\n                \"id\": 1,\n                \"plate_number\": \"ABC 123\"\n            },\n            \"departure_city\": {\n                \"id\": 1,\n                \"name\": \"Cairo\"\n            },\n            \"arrival_city\": {\n                \"id\": 4,\n                \"name\": \"AlMinya\"\n            }\n        },\n        {\n            \"id\": 4,\n            \"departure_at\": \"2023-11-21 06:11 PM\",\n            \"arrive_at\": \"2023-11-21 07:11 PM\",\n            \"available_seats\": 12,\n            \"bus\": {\n                \"id\": 1,\n                \"plate_number\": \"ABC 123\"\n            },\n            \"departure_city\": {\n                \"id\": 3,\n                \"name\": \"AlFayyum\"\n            },\n            \"arrival_city\": {\n                \"id\": 4,\n                \"name\": \"AlMinya\"\n            }\n        },\n        {\n            \"id\": 5,\n            \"departure_at\": \"2023-11-21 07:11 PM\",\n            \"arrive_at\": \"2023-11-21 08:11 PM\",\n            \"available_seats\": 12,\n            \"bus\": {\n                \"id\": 1,\n                \"plate_number\": \"ABC 123\"\n            },\n            \"departure_city\": {\n                \"id\": 4,\n                \"name\": \"AlMinya\"\n            },\n            \"arrival_city\": {\n                \"id\": 5,\n                \"name\": \"Asyut\"\n            }\n        }\n    ]\n}"
+								}
+							]
+						},
+						{
+							"name": "Show",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}passenger/trips/1",
+									"host": [
+										"{{url}}passenger"
+									],
+									"path": [
+										"trips",
+										"1"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Show",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{url}}passenger/trips/1",
+											"host": [
+												"{{url}}passenger"
+											],
+											"path": [
+												"trips",
+												"1"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Date",
+											"value": "Tue, 21 Nov 2023 11:58:33 GMT"
+										},
+										{
+											"key": "Date",
+											"value": "Tue, 21 Nov 2023 11:58:33 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.2.9"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "60"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "59"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"success\": true,\n    \"message\": \"\",\n    \"data\": {\n        \"id\": 1,\n        \"departure_at\": \"2023-11-21 01:25 PM\",\n        \"arrive_at\": \"2023-11-21 08:11 PM\",\n        \"available_seats\": 12,\n        \"departure_city\": {\n            \"id\": 1,\n            \"name\": \"Cairo\"\n        },\n        \"arrival_city\": {\n            \"id\": 5,\n            \"name\": \"Asyut\"\n        },\n        \"seats\": [\n            {\n                \"id\": 1,\n                \"serial_no\": \"xDC-470\",\n                \"bus_id\": 1\n            },\n            {\n                \"id\": 2,\n                \"serial_no\": \"Sfp-323\",\n                \"bus_id\": 1\n            },\n            {\n                \"id\": 3,\n                \"serial_no\": \"TdQ-89\",\n                \"bus_id\": 1\n            },\n            {\n                \"id\": 4,\n                \"serial_no\": \"aVA-429\",\n                \"bus_id\": 1\n            },\n            {\n                \"id\": 5,\n                \"serial_no\": \"494-641\",\n                \"bus_id\": 1\n            },\n            {\n                \"id\": 6,\n                \"serial_no\": \"48U-303\",\n                \"bus_id\": 1\n            },\n            {\n                \"id\": 7,\n                \"serial_no\": \"O2D-836\",\n                \"bus_id\": 1\n            },\n            {\n                \"id\": 8,\n                \"serial_no\": \"yJY-664\",\n                \"bus_id\": 1\n            },\n            {\n                \"id\": 9,\n                \"serial_no\": \"j0X-762\",\n                \"bus_id\": 1\n            },\n            {\n                \"id\": 10,\n                \"serial_no\": \"0iM-91\",\n                \"bus_id\": 1\n            },\n            {\n                \"id\": 11,\n                \"serial_no\": \"zLJ-128\",\n                \"bus_id\": 1\n            },\n            {\n                \"id\": 12,\n                \"serial_no\": \"sSa-707\",\n                \"bus_id\": 1\n            }\n        ]\n    }\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "General",
+					"item": [
+						{
+							"name": "DDL List",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}passenger/ddlList?modelName=City&cols[0]=name&only_active=",
+									"host": [
+										"{{url}}passenger"
+									],
+									"path": [
+										"ddlList"
+									],
+									"query": [
+										{
+											"key": "modelName",
+											"value": "City"
+										},
+										{
+											"key": "cols[0]",
+											"value": "name"
+										},
+										{
+											"key": "only_active",
+											"value": ""
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "DDL List",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{url}}passenger/ddlList?modelName=City&cols[0]=name&only_active=",
+											"host": [
+												"{{url}}passenger"
+											],
+											"path": [
+												"ddlList"
+											],
+											"query": [
+												{
+													"key": "modelName",
+													"value": "City"
+												},
+												{
+													"key": "cols[0]",
+													"value": "name"
+												},
+												{
+													"key": "only_active",
+													"value": ""
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Date",
+											"value": "Tue, 21 Nov 2023 09:48:39 GMT"
+										},
+										{
+											"key": "Date",
+											"value": "Tue, 21 Nov 2023 09:48:39 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.2.9"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "60"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "57"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"success\": true,\n    \"message\": \"\",\n    \"data\": [\n        {\n            \"id\": 1,\n            \"name\": \"Cairo\"\n        },\n        {\n            \"id\": 2,\n            \"name\": \"Giza\"\n        },\n        {\n            \"id\": 3,\n            \"name\": \"AlFayyum\"\n        },\n        {\n            \"id\": 4,\n            \"name\": \"AlMinya\"\n        },\n        {\n            \"id\": 5,\n            \"name\": \"Asyut\"\n        }\n    ]\n}"
+								}
+							]
+						}
+					]
+				}
+			]
+		}
+	]
+}
